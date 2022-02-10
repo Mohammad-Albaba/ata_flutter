@@ -39,6 +39,7 @@ class _SupportScreenState extends State<SupportScreen> {
                   child: Container(
                     color: Colors.white,
                     child: TextFormField(
+                      textAlign: TextAlign.start,
                       controller: connectController,
                       keyboardType: TextInputType.text,
                       decoration: InputDecoration(
@@ -65,6 +66,7 @@ class _SupportScreenState extends State<SupportScreen> {
                   child: Container(
                     color: Colors.white,
                     child: TextFormField(
+                      textAlign: TextAlign.start,
                       controller: connectController,
                       keyboardType: TextInputType.text,
                       decoration: InputDecoration(
@@ -92,11 +94,18 @@ class _SupportScreenState extends State<SupportScreen> {
                     decoration: InputDecoration(
                       hintText: ' شاركنا مشكلتك لحلها...',
                       labelText: 'شاركنا مشكلتك لحلها',
+                      labelStyle: TextStyle(
+                        fontSize: 16.0,
+                        color: Colors.grey,
+                      ),
                       contentPadding: EdgeInsets.symmetric(
                         vertical: 55,
                         horizontal: 20,
                       ),
                       border: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.grey,
+                        ),
                         borderRadius: BorderRadius.circular(30),
                       ),
                     ),
@@ -108,6 +117,9 @@ class _SupportScreenState extends State<SupportScreen> {
                     radius: 30,
                     text: 'موافق',
                     isUpperCase: true,
+                    function: (){
+                      Navigator.pop(context);
+                    }
                   ),
                 ),
                 Text('أو قم بالتواصل معنا عبر الحسابات التالية'),
