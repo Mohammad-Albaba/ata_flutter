@@ -8,6 +8,7 @@ import 'package:beauty_app/core/widgets/CustomLargeButton.dart';
 import 'package:beauty_app/core/widgets/CustomSmallBottom.dart';
 import 'package:beauty_app/core/widgets/NavigationDrawer.dart';
 import 'package:beauty_app/features/home/presentation/widget/IconModel.dart';
+import 'package:beauty_app/features/salons/sa.dart';
 import '../../data/CardModel.dart';
 import 'package:beauty_app/features/home/presentation/widget/CustomCard.dart';
 import 'package:beauty_app/features/offers/presentation/pages/OffersPage.dart';
@@ -508,12 +509,19 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         CustomNavigationBarItem(
-          icon: Icon(
-            Icons.grid_view_rounded,
-            color: selectedPageIndex == 2
-                ? AppColors.Primary_Style
-                : AppColors.Gray,
-                
+          icon: InkWell(
+            child: Icon(
+              Icons.grid_view_rounded,
+              color: selectedPageIndex == 2
+                  ? AppColors.Primary_Style
+                  : AppColors.Gray,
+
+            ),
+            onTap: (){
+              Navigator.push(context,
+                MaterialPageRoute(builder: (context)=> Saloans()),
+              );
+            },
           ),
           
           title: Text(
