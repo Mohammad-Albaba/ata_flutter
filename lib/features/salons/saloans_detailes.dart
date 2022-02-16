@@ -30,6 +30,8 @@ class _SaloansDetailesState extends State<SaloansDetailes> {
   Color _colorIcon3 = Colors.white;
   Color _colorIcon4 = Colors.white;
   Color _colorIcon5 = Colors.white;
+  bool _alreadySaved = false;
+  bool isPressed = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,9 +54,14 @@ class _SaloansDetailesState extends State<SaloansDetailes> {
                     color: Colors.black12,
                     child: IconButton(
                       padding: EdgeInsets.zero,
-                      icon: Icon(Icons.favorite,color: _iconColor,size: 18,),
+                      icon: Icon(
+                        _alreadySaved ? Icons.favorite : Icons.favorite_border,
+                        color: _iconColor,
+                        size: 18,
+                      ),
                       onPressed: (){
                         setState(() {
+                          _alreadySaved = true;
                           _iconColor = Colors.red;
                         });
                       },
@@ -174,35 +181,113 @@ class _SaloansDetailesState extends State<SaloansDetailes> {
               InkWell(
                 onTap: (){
                   setState(() {
+                    isPressed = true;
                     _colorTextField2 = Colors.white;
                     _colorTextFieldIcon2 = Colors.white;
                     _colorIcon2 = AppColors.textFieldIcon;
                   });
                 },
-                child: Container(
-                  height: 56,
-                  decoration: BoxDecoration(
-                    color: _colorTextField2,
-                    border: Border.all(color: Colors.grey),
-                    borderRadius: BorderRadius.circular(16.0),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Row(
-                      children: [
-                        Text('معالجة الشعر'),
-                        Spacer(),
-                        Container(
-                            decoration: BoxDecoration(
-                              color: _colorTextFieldIcon2,
-                              shape: BoxShape.circle,
-                              border: Border.all(color: Colors.grey),
+                  child: isPressed ?  Column(
+                    children: [
+                      Container(
+                        height: 56,
+                        decoration: BoxDecoration(
+                          color: _colorTextField2,
+                          border: Border.all(color: Colors.grey),
+                          borderRadius: BorderRadius.circular(16.0),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Row(
+                            children: [
+                              Text('معالجة الشعر'),
+                              Spacer(),
+                              Container(
+                                  decoration: BoxDecoration(
+                                    color: _colorTextFieldIcon2,
+                                    shape: BoxShape.circle,
+                                    border: Border.all(color: Colors.grey),
+                                  ),
+                                  child: Icon(Icons.arrow_drop_down,color: _colorIcon2,)),
+                            ],
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        height: 85,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey),
+                          borderRadius: BorderRadius.circular(16.0),
+                        ),
+                        child: Row(
+                          children: [
+                            Image(
+                              height : 70,
+                              width: 65,
+                              image: AssetImage('assets/icons/c.png'),
                             ),
-                            child: Icon(Icons.arrow_drop_down,color: _colorIcon2,)),
-                      ],
-                    ),
+                            SizedBox(width: 10.0,),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'برافين يد',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Text(
+                                  '99.00   ر.س',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Spacer(),
+                            Padding(
+                              padding: const EdgeInsets.all(16.0),
+                              child: Container(
+                                  decoration: BoxDecoration(
+                                    color: _colorTextFieldIcon2,
+                                    shape: BoxShape.circle,
+                                    border: Border.all(color: Colors.grey),
+                                  ),
+                                  child: Icon(Icons.add,color: AppColors.textFieldIcon,)),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  )
+                : Container(
+              height: 56,
+              decoration: BoxDecoration(
+                  color: _colorTextField2,
+                  border: Border.all(color: Colors.grey),
+          borderRadius: BorderRadius.circular(16.0),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Row(
+            children: [
+              Text('معالجة الشعر'),
+              Spacer(),
+              Container(
+                  decoration: BoxDecoration(
+                    color: _colorTextFieldIcon2,
+                    shape: BoxShape.circle,
+                    border: Border.all(color: Colors.grey),
                   ),
-                ),
+                  child: Icon(Icons.arrow_drop_down,color: _colorIcon2,)),
+            ],
+          ),
+        ),
+      ),
               ),
               SizedBox(height: 10,),
               InkWell(
