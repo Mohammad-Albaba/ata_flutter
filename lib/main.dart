@@ -12,6 +12,8 @@ import 'package:flutter/services.dart';
 import 'package:sizer/sizer.dart';
 import 'package:easy_localization/easy_localization.dart';
 
+import 'features/salons/MyBookings_screen.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -65,7 +67,8 @@ class MyApp extends StatelessWidget {
           fontFamily:
               AppSharedPreferences.lang == LANG_AR ? 'ARBFONTS' : 'MYRIADPRO',
         ),
-        home: Splash(),
+        // home: MyBookingsScreen(),
+      home: Splash(),
         //home: AppSharedPreferences.hasAccessIntro ? Intro() : AppSharedPreferences.hasAccessToken ? LoginPage() : DrawerPage(),
         debugShowCheckedModeBanner: false,
         localizationsDelegates: context.localizationDelegates,
